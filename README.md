@@ -5,7 +5,7 @@
 
 ## 功能修改
 
-### Dashboard
+### Dashboard (管理面板)
 - **GPU 面板增强**：在原有 GPU 利用率基础上，增加显存使用量显示（已用 / 总量）
 - 需配合自定义 Agent 使用
 
@@ -39,80 +39,96 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 | `GPU_0_mem_used` | GPU 已用显存 (MiB) |
 | `GPU_0_mem_total` | GPU 总显存 (MiB) |
 
-## 文件说明
-
-```
-nezha/
-├── README.md
-├── dashboard/
-│   └── nezha-dashboard          # Dashboard 二进制 (linux amd64)
-└── agent/
-    ├── nezha-agent              # Agent 二进制 (linux amd64)
-    ├── install.sh               # 一键安装脚本
-    └── temperature.go           # 温度采集源码
-```
-
 ## 安装要求
 
 - 支持 **Linux amd64** 架构
-- 需要 wget 或 curl
 - Dashboard 和 Agent 均编译为静态 Go 二进制，无外部依赖
+- GPU 功能需要 NVIDIA 显卡驱动（nvidia-smi）
+
+## 下载
+
+从 [Releases](https://github.com/chansheung/nezha-GIG/releases) 页面下载最新版本的压缩包：
+
+| 包名 | 包含内容 |
+|------|---------|
+| `nezha-dashboard-v1.0.0.tar.gz` | Dashboard 二进制 + 一键安装脚本 |
+| `nezha-agent-v1.0.0.tar.gz` | Agent 二进制 + 一键安装脚本 + 温度源码 |
 
 ## 安装方法
 
 ### Dashboard
 
-> 需要有现成的 SQLite 数据库或 MySQL 配置
-
 ```bash
-# 1. 创建目录
-sudo mkdir -p /opt/nezha/dashboard/data
+# 下载并解压
+tar xzf nezha-dashboard-v1.0.0.tar.gz
+cd dashboard
 
-# 2. 复制二进制
-sudo bash -c 'cat ./nezha-dashboard > /opt/nezha/dashboard/app'
-sudo chmod +x /opt/nezha/dashboard/app
-
-# 3. 创建 systemd 服务
-sudo tee /etc/systemd/system/nezha-dashboard.service << 'SERVICEEOF'
-[Unit]
-Description=Nezha Dashboard
-After=network.target
-
-[Service]
-Type=simple
-WorkingDirectory=/opt/nezha/dashboard
-ExecStart=/opt/nezha/dashboard/app
-Restart=always
-RestartSec=5
-
-[Install]
-WantedBy=multi-user.target
-SERVICEEOF
-
-# 4. 启动
-sudo systemctl daemon-reload
-sudo systemctl enable --now nezha-dashboard.service
-```
-
-### Agent
-
-一键安装（全新安装或替换升级均可）：
-
-```bash
-cd agent/
+# 一键安装
 sudo bash install.sh
 ```
 
-脚本会提示输入 Dashboard 地址和 Client Secret，你也可以通过环境变量预填：
+脚本会：
+1. 创建 `/opt/nezha/dashboard/` 目录
+2. 安装 Dashboard 二进制
+3. 创建 systemd 服务
+4. 首次安装提示编辑配置文件
+
+首次安装后需编辑配置文件：
+
+```bash
+sudo vim /opt/nezha/dashboard/data/config.yaml
+```
+
+最小配置示例：
+
+```yaml
+listen_port: 8008
+site_name: "哪吒监控"
+language: zh_CN
+install_host: "你的IP:8008"
+```
+
+编辑完成后启动服务：
+
+```bash
+sudo systemctl start nezha-dashboard.service
+```
+
+访问 `http://你的IP:8008` 完成初始化。
+
+### Agent
+
+```bash
+# 下载并解压
+tar xzf nezha-agent-v1.0.0.tar.gz
+cd agent
+
+# 一键安装（支持全新安装和替换升级）
+sudo bash install.sh
+```
+
+脚本会提示输入 Dashboard 地址和 Client Secret，也可以通过环境变量预填：
 
 ```bash
 sudo NZ_SERVER=your-server:8008 NZ_CLIENT_SECRET=your-secret bash install.sh
 ```
 
 功能：
-- ✅ 全新安装：自动创建配置、systemd 服务、启动 agent
+- ✅ 全新安装：自动创建配置、systemd 服务、启动 Agent
 - ✅ 替换升级：备份原二进制、替换新版本、重启服务
 - ✅ 保留现有配置（不会覆盖已有的 config.yml）
+
+### 查看状态
+
+```bash
+# Dashboard
+sudo systemctl status nezha-dashboard.service
+sudo journalctl -u nezha-dashboard --no-pager -n 20
+
+# Agent
+sudo systemctl status nezha-agent.service
+sudo journalctl -u nezha-agent --no-pager -n 20
+```
 
 ## 自行编译
 

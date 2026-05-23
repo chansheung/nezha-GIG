@@ -7,3 +7,4 @@ agent/nezha-agent
 Thumbs.db
 *.gz
 *.zip
+*.tar.gz
