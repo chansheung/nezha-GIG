@@ -5,3 +5,5 @@ agent/nezha-agent
 # OS files
 .DS_Store
 Thumbs.db
+*.gz
+*.zip
