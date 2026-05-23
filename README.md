@@ -51,8 +51,8 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 | 包名 | 包含内容 |
 |------|---------|
-| `nezha-dashboard-v1.0.0.tar.gz` | Dashboard 二进制 + 一键安装脚本 |
-| `nezha-agent-v1.0.0.tar.gz` | Agent 二进制 + 一键安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.1.tar.gz` | Dashboard 二进制 + 一键安装脚本 |
+| `nezha-agent-v0.0.1.tar.gz` | Agent 二进制 + 一键安装脚本 + 温度源码 |
 
 ## 安装方法
 
@@ -60,7 +60,7 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 ```bash
 # 下载并解压
-tar xzf nezha-dashboard-v1.0.0.tar.gz
+tar xzf nezha-dashboard-v0.0.1.tar.gz
 cd dashboard
 
 # 一键安装
@@ -100,7 +100,7 @@ sudo systemctl start nezha-dashboard.service
 
 ```bash
 # 下载并解压
-tar xzf nezha-agent-v1.0.0.tar.gz
+tar xzf nezha-agent-v0.0.1.tar.gz
 cd agent
 
 # 一键安装（支持全新安装和替换升级）
