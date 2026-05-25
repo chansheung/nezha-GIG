@@ -1,0 +1,9 @@
+{
+  "id": "job-1779598108100-pspz",
+  "command": "& \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\build.ps1\"",
+  "tmuxSession": "flowcraft-job-1779598108100-pspz",
+  "status": "failed",
+  "startedAt": "2026-05-24T04:48:28.100Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598108100-pspz.log",
+  "completedAt": "2026-05-24T04:49:08.064Z"
+}

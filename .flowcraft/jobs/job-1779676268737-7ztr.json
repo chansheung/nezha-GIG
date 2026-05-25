@@ -1,0 +1,9 @@
+{
+  "id": "job-1779676268737-7ztr",
+  "command": "cmd /c copy \"F:\\nezha\\agent\\install.ps1\" \"F:\\nezha\\release_temp\\install.ps1\"",
+  "tmuxSession": "flowcraft-job-1779676268737-7ztr",
+  "status": "failed",
+  "startedAt": "2026-05-25T02:31:08.737Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779676268737-7ztr.log",
+  "completedAt": "2026-05-25T02:31:11.080Z"
+}

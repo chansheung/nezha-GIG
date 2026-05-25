@@ -1,0 +1,9 @@
+{
+  "id": "job-1779598125808-ydgy",
+  "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\build.ps1\"",
+  "tmuxSession": "flowcraft-job-1779598125808-ydgy",
+  "status": "failed",
+  "startedAt": "2026-05-24T04:48:45.808Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598125808-ydgy.log",
+  "completedAt": "2026-05-24T04:49:08.365Z"
+}

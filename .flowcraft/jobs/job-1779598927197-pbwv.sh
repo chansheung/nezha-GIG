@@ -1,0 +1,3 @@
+#!/bin/bash
+Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\test_temp" -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\build.bat" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\build.ps1" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\vet.bat" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\*.ps1" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath "C:\Users\well\AppData\Local\Temp\opencode\*.txt" -Force -ErrorAction SilentlyContinue
+echo "\n[flowcraft:exit:$?]"

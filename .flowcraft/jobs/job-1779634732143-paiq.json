@@ -1,0 +1,9 @@
+{
+  "id": "job-1779634732143-paiq",
+  "command": "$logFile = \"F:\\nezha\\agent\\install_log.txt\"\n$scriptBlock = @\"\ncd 'F:\\nezha\\agent'\npowershell -ExecutionPolicy Bypass -File 'F:\\nezha\\agent\\install.ps1' -Server '172.30.0.10:8008' -ClientSecret '0y5RDcFV3BDwUbcgqn3mpLjiWYKQWV5H' *> '$logFile'\n\"@\nStart-Process powershell -Verb RunAs -ArgumentList \"-NoProfile -ExecutionPolicy Bypass -Command `\"$scriptBlock`\"\" -Wait\nGet-Content $logFile -Raw",
+  "tmuxSession": "flowcraft-job-1779634732143-paiq",
+  "status": "failed",
+  "startedAt": "2026-05-24T14:58:52.143Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779634732143-paiq.log",
+  "completedAt": "2026-05-24T14:59:11.346Z"
+}

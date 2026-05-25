@@ -1,0 +1,9 @@
+{
+  "id": "job-1779634742442-g0lf",
+  "command": "powershell -Command \"Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \\\"F:\\nezha\\agent\\install.ps1\\\" -Server \\\"172.30.0.10:8008\\\" -ClientSecret \\\"0y5RDcFV3BDwUbcgqn3mpLjiWYKQWV5H\\\"' -Wait; Write-Host 'Elevated process completed'\"",
+  "tmuxSession": "flowcraft-job-1779634742442-g0lf",
+  "status": "failed",
+  "startedAt": "2026-05-24T14:59:02.442Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779634742442-g0lf.log",
+  "completedAt": "2026-05-24T14:59:11.649Z"
+}

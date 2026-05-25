@@ -1,0 +1,9 @@
+{
+  "id": "job-1779673211250-nx8g",
+  "command": "if (Test-Path -LiteralPath \"F:\\nezha\\agent_build_temp\") { Remove-Item -LiteralPath \"F:\\nezha\\agent_build_temp\" -Recurse -Force; Write-Output \"Cleaned old build directory\" } else { Write-Output \"No old build directory found\" }",
+  "tmuxSession": "flowcraft-job-1779673211250-nx8g",
+  "status": "failed",
+  "startedAt": "2026-05-25T01:40:11.250Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779673211250-nx8g.log",
+  "completedAt": "2026-05-25T01:41:05.671Z"
+}

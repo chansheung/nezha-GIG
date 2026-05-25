@@ -1,0 +1,3 @@
+#!/bin/bash
+$url = "https://github.com/nezhahq/agent/releases/download/v2.0.3/nezha-agent_windows_amd64.zip"; $zip = "F:\nezha\agent\official_agent.zip"; $out = "F:\nezha\agent\nezha-agent-official.exe"; Invoke-WebRequest -Uri $url -OutFile $zip -UseBasicParsing; Write-Host "Downloaded"; Expand-Archive -Path $zip -DestinationPath "F:\nezha\agent\official_tmp" -Force; Get-ChildItem "F:\nezha\agent\official_tmp" -Recurse -Include "*.exe" | Select-Object -First 1 | ForEach-Object { Copy-Item $_.FullName $out -Force; Write-Host "Extracted: $($_.Name)" }; Remove-Item "F:\nezha\agent\official_tmp" -Recurse -Force; Remove-Item $zip -Force
+echo "\n[flowcraft:exit:$?]"

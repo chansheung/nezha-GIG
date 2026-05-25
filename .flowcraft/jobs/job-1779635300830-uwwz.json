@@ -1,0 +1,9 @@
+{
+  "id": "job-1779635300830-uwwz",
+  "command": "python -c \"\nimport urllib.request, zipfile, os, shutil\nurl = 'https://github.com/nezhahq/agent/releases/download/v2.0.3/nezha-agent_windows_amd64.zip'\nzip_path = os.path.join('F:\\\\nezha\\\\agent', 'official_agent.zip')\nexe_path = os.path.join('F:\\\\nezha\\\\agent', 'nezha-agent-official.exe')\nurllib.request.urlretrieve(url, zip_path)\nprint('Downloaded zip')\nwith zipfile.ZipFile(zip_path, 'r') as zf:\n    for info in zf.infolist():\n        if info.filename.endswith('.exe'):\n            with zf.open(info) as src, open(exe_path, 'wb') as dst:\n                shutil.copyfileobj(src, dst)\n            print(f'Extracted {info.filename}')\nos.remove(zip_path)\nprint('Done')\n\"",
+  "tmuxSession": "flowcraft-job-1779635300830-uwwz",
+  "status": "failed",
+  "startedAt": "2026-05-24T15:08:20.830Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635300830-uwwz.log",
+  "completedAt": "2026-05-24T15:08:43.618Z"
+}

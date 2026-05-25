@@ -1,0 +1,9 @@
+{
+  "id": "job-1779634717424-wak1",
+  "command": "powershell -ExecutionPolicy Bypass -File install.ps1 -Server \"172.30.0.10:8008\" -ClientSecret \"0y5RDcFV3BDwUbcgqn3mpLjiWYKQWV5H\"",
+  "tmuxSession": "flowcraft-job-1779634717424-wak1",
+  "status": "failed",
+  "startedAt": "2026-05-24T14:58:37.424Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779634717424-wak1.log",
+  "completedAt": "2026-05-24T14:59:06.881Z"
+}

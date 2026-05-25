@@ -9,24 +9,31 @@
 - **GPU 面板增强**：在原有 GPU 利用率基础上，增加显存使用量显示（已用 / 总量）
 - 需配合自定义 Agent 使用
 
-### Agent (`temperature.go`)
+### Agent (`temperature`)
 
-#### 1. NVMe 温度显示挂载点名
+#### 1. NVMe 温度显示挂载点名 (Linux)
 SSD 温度传感器默认显示为 `nvme_sensor_1`，无法区分是哪个硬盘。
 修改后显示为 `/mnt` 目录下的挂载点名称，例如 `m2_8t_1_sensor_1`、`nvme2t_2_composite`。
 
-#### 2. RAID0 成员盘自动识别
+#### 2. RAID0 成员盘自动识别 (Linux)
 NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂载点。
 例如 `md1` → `/mnt/m2_16t` → 传感器显示为 `m2_16t_sensor_1`。
 
-#### 3. CPU 温度名称简化
+#### 3. CPU 温度名称简化 (Linux)
 - `k10temp_tctl` → `CPU`
 - `k10temp_tccd1` → `CPU_1`
 
-#### 4. GPU 温度 + 显存采集
+#### 4. GPU 温度 + 显存采集 (Linux / Windows)
 通过 `nvidia-smi` 采集 NVIDIA GPU 温度和显存使用量。
 
+#### 5. Windows 温度监控（amd64）
+- **GPU 温度 + 显存**：通过 `nvidia-smi` 采集 NVIDIA GPU 温度和显存使用量
+- **磁盘温度**：通过 PowerShell `Get-PhysicalDisk | Get-StorageReliabilityCounter` 获取硬盘温度，显示硬盘型号名（如 `sn580`、`ST4000DM004`）
+- **CPU 温度**：桌面平台通常无 ACPI 热区传感器，暂不支持
+
 ### 传感器名称对照
+
+#### Linux
 
 | 传感器 | 含义 |
 |--------|------|
@@ -36,14 +43,40 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 | `CPU` | CPU 整体温度 (AMD k10temp tctl) |
 | `CPU_N` | CPU 第 N 个 CCD 温度 |
 | `GPU_0` / `GPU_1` | GPU 温度 |
+| `GPU_0_mem` | GPU 显存使用率 (%) |
+| `GPU_0_mem_used` | GPU 已用显存 (MiB) |
+| `GPU_0_mem_total` | GPU 总显存 (MiB) |
+
+#### Windows
+
+| 传感器 | 含义 |
+|--------|------|
+| `硬盘型号名` | 硬盘温度，如 `sn580`、`ST4000DM004` 等 |
+| `GPU_0` / `GPU_1` | GPU 温度 |
+| `GPU_0_mem` | GPU 显存使用率 (%) |
 | `GPU_0_mem_used` | GPU 已用显存 (MiB) |
 | `GPU_0_mem_total` | GPU 总显存 (MiB) |
 
 ## 安装要求
 
-- 支持 **Linux amd64** 架构
+- 支持 **Linux amd64** 和 **Windows amd64** 架构
 - Dashboard 和 Agent 均编译为静态 Go 二进制，无外部依赖
-- GPU 功能需要 NVIDIA 显卡驱动（nvidia-smi）
+- GPU 功能需要 NVIDIA 显卡驱动（nvidia-smi），建议安装到系统 PATH
+- Windows Agent 需要以管理员权限运行（安装服务、查询 WMI/PowerShell）
+
+## 测试平台
+
+### Windows amd64
+
+| 项目 | 详情 |
+|------|------|
+| 操作系统 | Windows 11 |
+| CPU | Intel Core i9-10920X @ 3.50GHz (12核24线程) |
+| GPU | NVIDIA GeForce RTX 3080 (10GB GDDR6X) |
+| 显卡驱动 | NVIDIA-SMI 576.52 / CUDA 12.9 |
+| 磁盘 | NVMe SSD + SATA HDD 混合环境 |
+| 架构 | amd64 (x86_64) |
+| 测试状态 | ✅ 通过 |
 
 ## 下载
 
@@ -51,16 +84,18 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 | 包名 | 包含内容 |
 |------|---------|
-| `nezha-dashboard-v0.0.1.tar.gz` | Dashboard 二进制 + 一键安装脚本 |
-| `nezha-agent-v0.0.1.tar.gz` | Agent 二进制 + 一键安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.2.tar.gz` | Dashboard 二进制 + Linux 安装脚本 |
+| `nezha-agent-v0.0.2.tar.gz` | Agent 二进制 + Linux 安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.2-windows-amd64.zip` | Dashboard 二进制 + Windows 安装脚本 |
+| `nezha-agent-v0.0.2-windows-amd64.zip` | Agent 二进制 + Windows 安装脚本 + 温度源码 |
 
 ## 安装方法
 
-### Dashboard
+### Dashboard (Linux)
 
 ```bash
 # 下载并解压
-tar xzf nezha-dashboard-v0.0.1.tar.gz
+tar xzf nezha-dashboard-v0.0.2.tar.gz
 cd dashboard
 
 # 一键安装
@@ -96,11 +131,11 @@ sudo systemctl start nezha-dashboard.service
 
 访问 `http://你的IP:8008` 完成初始化。
 
-### Agent
+### Agent (Linux)
 
 ```bash
 # 下载并解压
-tar xzf nezha-agent-v0.0.1.tar.gz
+tar xzf nezha-agent-v0.0.2.tar.gz
 cd agent
 
 # 一键安装（支持全新安装和替换升级）
@@ -118,7 +153,62 @@ sudo NZ_SERVER=your-server:8008 NZ_CLIENT_SECRET=your-secret bash install.sh
 - ✅ 替换升级：备份原二进制、替换新版本、重启服务
 - ✅ 保留现有配置（不会覆盖已有的 config.yml）
 
-### 查看状态
+### Dashboard (Windows)
+
+```powershell
+# 下载并解压
+Expand-Archive nezha-dashboard-v0.0.2-windows-amd64.zip -DestinationPath dashboard
+cd dashboard
+
+# 以管理员身份运行安装脚本
+.\install.ps1
+```
+
+首次安装后编辑配置文件：
+
+```powershell
+notepad "C:\Program Files\NezhaDashboard\data\config.yaml"
+```
+
+编辑完成后启动服务：
+
+```powershell
+Start-Service NezhaDashboard
+```
+
+### Agent (Windows)
+
+```powershell
+# 下载并解压
+Expand-Archive nezha-agent-v0.0.2-windows-amd64.zip -DestinationPath agent
+cd agent
+
+# 以管理员身份运行安装脚本
+.\install.ps1
+```
+
+也可以通过参数预填连接信息：
+
+```powershell
+.\install.ps1 -Server "your-server:8008" -ClientSecret "your-secret"
+```
+
+**安装脚本会自动完成：**
+
+1. 创建安装目录 `C:\Program Files\NezhaAgent\`
+2. 写入配置文件 `config.yml`（含 `gpu: true`、`temperature: true`）
+3. 复制 `nezha-agent.exe`
+4. 注册 Windows 服务 `NezhaAgent`（开机自启）
+5. 设置服务失败自动重启（5秒/10秒/30秒）
+6. 启动服务
+
+**若要禁用 GPU 或温度监控：**
+
+```powershell
+.\install.ps1 -Server "your-server:8008" -ClientSecret "your-secret" -DisableGpu -DisableTemperature
+```
+
+### 查看状态 (Linux)
 
 ```bash
 # Dashboard
@@ -130,18 +220,65 @@ sudo systemctl status nezha-agent.service
 sudo journalctl -u nezha-agent --no-pager -n 20
 ```
 
+### 查看状态 (Windows)
+
+```powershell
+# Dashboard
+Get-Service NezhaDashboard
+
+# Agent
+Get-Service NezhaAgent
+
+# 调试运行
+& "C:\Program Files\NezhaAgent\nezha-agent.exe" -c "C:\Program Files\NezhaAgent\config.yml"
+```
+
 ## 自行编译
 
-### Agent
+### Agent (Linux)
+
 ```bash
 git clone -b v2.0.3 https://github.com/nezhahq/agent.git
-cp temperature.go agent/pkg/monitor/temperature/
 cd agent
-go build -ldflags="-X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3" \
+
+# 复制自定义温度文件
+cp /path/to/temperature_linux.go pkg/monitor/temperature/
+
+# 注意：上游已有一个 temperature.go，需在第一行添加：
+# //go:build !windows && !linux
+
+GOOS=linux GOARCH=amd64 go build -ldflags="\
+  -s -w \
+  -X main.arch=amd64 \
+  -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3" \
   -o nezha-agent ./cmd/agent
 ```
 
+### Agent (Windows)
+
+```bash
+git clone -b v2.0.3 https://github.com/nezhahq/agent.git
+cd agent
+
+# 复制自定义温度文件
+cp /path/to/temperature_windows.go pkg/monitor/temperature/
+cp /path/to/temperature_linux.go pkg/monitor/temperature/
+
+# 注意：上游已有一个 temperature.go，需在第一行添加：
+# //go:build !windows && !linux
+
+GOOS=windows GOARCH=amd64 go build -ldflags="\
+  -s -w \
+  -X main.arch=amd64 \
+  -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3-custom" \
+  -o nezha-agent.exe ./cmd/agent
+```
+
+> **注意**：`-X main.arch=amd64` 是必须的，否则 agent 启动时会报"与当前系统不匹配"错误。
+> Windows 版本需要 `github.com/yusufpapurcu/wmi` 依赖，该包在上游 agent 的 `go.mod` 中已包含。
+
 ### Dashboard
+
 ```bash
 git clone -b master https://github.com/nezhahq/nezha.git
 cd nezha

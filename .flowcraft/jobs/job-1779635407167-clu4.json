@@ -1,0 +1,9 @@
+{
+  "id": "job-1779635407167-clu4",
+  "command": "powershell -ExecutionPolicy Bypass -File F:\\nezha\\agent\\install.ps1 -Server \"172.30.0.10:8008\" -ClientSecret \"0y5RDcFV3BDwUbcgqn3mpLjiWYKQWV5H\"",
+  "tmuxSession": "flowcraft-job-1779635407167-clu4",
+  "status": "failed",
+  "startedAt": "2026-05-24T15:10:07.167Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635407167-clu4.log",
+  "completedAt": "2026-05-24T15:10:47.183Z"
+}

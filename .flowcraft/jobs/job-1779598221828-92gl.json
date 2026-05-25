@@ -1,0 +1,9 @@
+{
+  "id": "job-1779598221828-92gl",
+  "command": "cmd /c \"set GOOS=windows && set GOARCH=amd64 && set PATH=C:\\Go\\bin;%PATH% && cd /d F:\\nezha\\agent_upstream && go build -o nezha-agent.exe ./cmd/agent 2>&1\"",
+  "tmuxSession": "flowcraft-job-1779598221828-92gl",
+  "status": "failed",
+  "startedAt": "2026-05-24T04:50:21.828Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598221828-92gl.log",
+  "completedAt": "2026-05-24T04:52:10.035Z"
+}

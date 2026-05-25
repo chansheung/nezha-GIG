@@ -1,0 +1,8 @@
+{
+  "id": "job-1779635208375-hdf1",
+  "command": "Get-ChildItem \"F:\\nezha\\agent\" -Name | Where-Object { $_ -like \"*official*\" -or $_ -like \"*download*\" }",
+  "tmuxSession": "flowcraft-job-1779635208375-hdf1",
+  "status": "running",
+  "startedAt": "2026-05-24T15:06:48.375Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635208375-hdf1.log"
+}

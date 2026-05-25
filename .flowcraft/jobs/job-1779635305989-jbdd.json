@@ -1,0 +1,9 @@
+{
+  "id": "job-1779635305989-jbdd",
+  "command": "python -c \"import urllib.request; import zipfile; import os; url='https://github.com/nezhahq/agent/releases/download/v2.0.3/nezha-agent_windows_amd64.zip'; print('Downloading...'); urllib.request.urlretrieve(url, 'F:/nezha/agent/official.zip'); print('Extracting...'); with zipfile.ZipFile('F:/nezha/agent/official.zip', 'r') as z: z.extractall('F:/nezha/agent/official'); print('Done')\"",
+  "tmuxSession": "flowcraft-job-1779635305989-jbdd",
+  "status": "failed",
+  "startedAt": "2026-05-24T15:08:25.989Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635305989-jbdd.log",
+  "completedAt": "2026-05-24T15:08:43.894Z"
+}

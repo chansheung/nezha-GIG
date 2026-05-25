@@ -1,0 +1,8 @@
+{
+  "id": "job-1779676220956-lwuj",
+  "command": "Copy-Item -LiteralPath \"F:\\nezha\\agent\\install.ps1\" -Destination \"F:\\nezha\\release_temp\\install.ps1\"; if ($?) { Write-Host \"install.ps1 copied successfully\" }",
+  "tmuxSession": "flowcraft-job-1779676220956-lwuj",
+  "status": "running",
+  "startedAt": "2026-05-25T02:30:20.956Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779676220956-lwuj.log"
+}

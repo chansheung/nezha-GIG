@@ -1,0 +1,8 @@
+{
+  "id": "job-1779673227838-0wnp",
+  "command": "Remove-Item -Recurse -Force \"F:\\nezha\\agent_build_temp\" -ErrorAction SilentlyContinue; Write-Output \"Old build directory cleaned.\"",
+  "tmuxSession": "flowcraft-job-1779673227838-0wnp",
+  "status": "running",
+  "startedAt": "2026-05-25T01:40:27.838Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779673227838-0wnp.log"
+}

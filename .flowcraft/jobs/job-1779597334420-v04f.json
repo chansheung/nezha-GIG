@@ -1,0 +1,9 @@
+{
+  "id": "job-1779597334420-v04f",
+  "command": "choco install golang -y",
+  "tmuxSession": "flowcraft-job-1779597334420-v04f",
+  "status": "failed",
+  "startedAt": "2026-05-24T04:35:34.420Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779597334420-v04f.log",
+  "completedAt": "2026-05-24T04:36:18.390Z"
+}

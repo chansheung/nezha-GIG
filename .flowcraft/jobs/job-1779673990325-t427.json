@@ -1,0 +1,8 @@
+{
+  "id": "job-1779673990325-t427",
+  "command": "$env:GOOS=\"windows\"; $env:GOARCH=\"amd64\"; go build -ldflags=\"-s -w -X main.arch=amd64 -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3-custom\" -o nezha-agent.exe ./cmd/agent 2>&1",
+  "tmuxSession": "flowcraft-job-1779673990325-t427",
+  "status": "running",
+  "startedAt": "2026-05-25T01:53:10.325Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779673990325-t427.log"
+}

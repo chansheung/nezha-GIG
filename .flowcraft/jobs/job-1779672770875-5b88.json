@@ -1,0 +1,8 @@
+{
+  "id": "job-1779672770875-5b88",
+  "command": "$env:GOOS=\"windows\"; $env:GOARCH=\"amd64\"; & \"C:\\Go\\bin\\go.exe\" build -o F:\\nezha\\agent\\nezha-agent.exe ./cmd/agent 2>&1",
+  "tmuxSession": "flowcraft-job-1779672770875-5b88",
+  "status": "running",
+  "startedAt": "2026-05-25T01:32:50.875Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779672770875-5b88.log"
+}

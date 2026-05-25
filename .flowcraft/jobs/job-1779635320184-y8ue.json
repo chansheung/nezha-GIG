@@ -1,0 +1,9 @@
+{
+  "id": "job-1779635320184-y8ue",
+  "command": "python F:\\nezha\\agent\\download_official.py 2>&1",
+  "tmuxSession": "flowcraft-job-1779635320184-y8ue",
+  "status": "failed",
+  "startedAt": "2026-05-24T15:08:40.185Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635320184-y8ue.log",
+  "completedAt": "2026-05-24T15:08:44.384Z"
+}
