@@ -1,0 +1,23 @@
+# Dotfiles and dot directories (except .git)
+.*
+!.git
+!.gitignore
+
+# Python cache
+__pycache__/
+
+# Binary files
+dashboard/nezha-dashboard
+agent/nezha-agent
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives
+*.gz
+*.zip
+*.tar.gz
+
+# Flowcraft
+.flowcraft/
