@@ -1,9 +1,0 @@
-{
-  "id": "job-1779696745381-55fh",
-  "command": "$wsl = \"C:\\Program Files\\WSL\\wsl.exe\"\n& $wsl bash -c \"curl -fsSL https://opencode.ai/install | bash\"",
-  "tmuxSession": "flowcraft-job-1779696745381-55fh",
-  "status": "failed",
-  "startedAt": "2026-05-25T08:12:25.381Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779696745381-55fh.log",
-  "completedAt": "2026-05-25T14:10:10.748Z"
-}

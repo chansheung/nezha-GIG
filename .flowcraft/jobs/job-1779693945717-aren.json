@@ -1,9 +1,0 @@
-{
-  "id": "job-1779693945717-aren",
-  "command": "$ErrorActionPreference = \"SilentlyContinue\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $p = Start-Process -FilePath \"cmd.exe\" -ArgumentList \"/c\",\"wsl --install -d Ubuntu --no-launch\" -NoNewWindow -Wait -PassThru -RedirectStandardOutput \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_out.txt\" -RedirectStandardError \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_err.txt\" 2>&1; Write-Host \"Exit: $($p.ExitCode)\"; Write-Host \"--- OUT ---\"; Get-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_out.txt\" -ErrorAction SilentlyContinue; Write-Host \"--- ERR ---\"; Get-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_err.txt\" -ErrorAction SilentlyContinue",
-  "tmuxSession": "flowcraft-job-1779693945717-aren",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:25:45.717Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693945717-aren.log",
-  "completedAt": "2026-05-25T07:25:56.211Z"
-}

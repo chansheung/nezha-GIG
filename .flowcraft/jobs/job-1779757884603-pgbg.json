@@ -1,9 +1,0 @@
-{
-  "id": "job-1779757884603-pgbg",
-  "command": "go build -ldflags=\"-s -w -X main.arch=amd64 -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3-custom\" -o nezha-agent.exe ./cmd/agent 2>&1",
-  "tmuxSession": "flowcraft-job-1779757884603-pgbg",
-  "status": "failed",
-  "startedAt": "2026-05-26T01:11:24.603Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779757884603-pgbg.log",
-  "completedAt": "2026-05-26T07:51:55.258Z"
-}

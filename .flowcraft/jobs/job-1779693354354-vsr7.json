@@ -1,9 +1,0 @@
-{
-  "id": "job-1779693354354-vsr7",
-  "command": "# The garbled error is always the same - maybe it's a known WSL issue.\n# Let me try to install Ubuntu distro directly\n# First, check available distros online\nwsl --install -d Ubuntu --no-launch 2>&1 | Out-File \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install.txt\" -Encoding utf8\nGet-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install.txt\"",
-  "tmuxSession": "flowcraft-job-1779693354354-vsr7",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:15:54.354Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693354354-vsr7.log",
-  "completedAt": "2026-05-25T07:23:51.930Z"
-}

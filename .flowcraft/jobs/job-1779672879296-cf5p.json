@@ -1,9 +1,0 @@
-{
-  "id": "job-1779672879296-cf5p",
-  "command": "& \"C:\\Go\\bin\\go.exe\" build -o \"F:\\nezha\\agent_build_temp\\nezha-agent.exe\" \"./cmd/agent\" 2>&1",
-  "tmuxSession": "flowcraft-job-1779672879296-cf5p",
-  "status": "failed",
-  "startedAt": "2026-05-25T01:34:39.296Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779672879296-cf5p.log",
-  "completedAt": "2026-05-25T03:30:33.070Z"
-}

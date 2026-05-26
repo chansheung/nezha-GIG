@@ -1,9 +1,0 @@
-{
-  "id": "job-1779695396342-rsza",
-  "command": "$ErrorActionPreference = \"Continue\"\n$outFile = \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\opencode-linux-x64.tar.gz\"\n$url = \"https://github.com/anomalyco/opencode/releases/download/v1.15.10/opencode-linux-x64.tar.gz\"\nWrite-Host \"Downloading via .NET HttpClient...\"\n[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12\n$wc = New-Object System.Net.WebClient\ntry {\n    $wc.DownloadFile($url, $outFile)\n    $size = (Get-Item $outFile).Length / 1MB\n    Write-Host \"SUCCESS! Size: $([math]::Round($size, 2)) MB\"\n} catch {\n    Write-Host \"FAILED: $($_.Exception.Message)\"\n    Write-Host \"InnerException: $($_.Exception.InnerException.Message)\"\n}",
-  "tmuxSession": "flowcraft-job-1779695396342-rsza",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:49:56.342Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779695396342-rsza.log",
-  "completedAt": "2026-05-25T07:50:11.189Z"
-}

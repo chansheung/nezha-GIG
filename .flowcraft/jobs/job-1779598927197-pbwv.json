@@ -1,9 +1,0 @@
-{
-  "id": "job-1779598927197-pbwv",
-  "command": "Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\test_temp\" -Recurse -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\build.bat\" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\build.ps1\" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\vet.bat\" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\*.ps1\" -Force -ErrorAction SilentlyContinue; Remove-Item -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\*.txt\" -Force -ErrorAction SilentlyContinue",
-  "tmuxSession": "flowcraft-job-1779598927197-pbwv",
-  "status": "failed",
-  "startedAt": "2026-05-24T05:02:07.197Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598927197-pbwv.log",
-  "completedAt": "2026-05-25T03:30:32.831Z"
-}

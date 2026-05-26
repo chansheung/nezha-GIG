@@ -1,3 +1,0 @@
-#!/bin/bash
-cmd /c ""C:\Program Files\WSL\wsl.exe" -d Ubuntu-24.04 bash -c "cp /mnt/c/Users/well/AppData/Local/Temp/opencode/install_all.sh /tmp/ && bash /tmp/install_all.sh""
-echo "\n[flowcraft:exit:$?]"

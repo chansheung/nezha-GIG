@@ -1,9 +1,0 @@
-{
-  "id": "job-1779676195858-br7x",
-  "command": "Copy-Item -LiteralPath \"F:\\nezha\\agent\\install.ps1\" -Destination \"F:\\nezha\\release_temp\\install.ps1\"",
-  "tmuxSession": "flowcraft-job-1779676195858-br7x",
-  "status": "failed",
-  "startedAt": "2026-05-25T02:29:55.858Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779676195858-br7x.log",
-  "completedAt": "2026-05-25T02:30:58.260Z"
-}

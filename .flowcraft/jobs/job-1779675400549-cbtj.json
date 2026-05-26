@@ -1,9 +1,0 @@
-{
-  "id": "job-1779675400549-cbtj",
-  "command": "$env:GOOS=\"windows\"; $env:GOARCH=\"amd64\"; & \"C:\\Go\\bin\\go.exe\" build -ldflags=\"-s -w -X main.arch=amd64 -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3-custom\" -o nezha-agent.exe ./cmd/agent 2>&1",
-  "tmuxSession": "flowcraft-job-1779675400549-cbtj",
-  "status": "failed",
-  "startedAt": "2026-05-25T02:16:40.549Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779675400549-cbtj.log",
-  "completedAt": "2026-05-25T02:16:45.454Z"
-}

@@ -1,3 +1,0 @@
-#!/bin/bash
-$ErrorActionPreference = "Continue"; $proc = Start-Process -FilePath "wsl.exe" -ArgumentList "--install","-d","Ubuntu","--no-launch" -NoNewWindow -Wait -PassThru -RedirectStandardOutput "C:\Users\well\AppData\Local\Temp\opencode\wsl_install_stdout.txt" -RedirectStandardError "C:\Users\well\AppData\Local\Temp\opencode\wsl_install_stderr.txt" 2>&1; Write-Host "Exit code: $($proc.ExitCode)"; Write-Host "=== STDOUT ==="; Get-Content "C:\Users\well\AppData\Local\Temp\opencode\wsl_install_stdout.txt" -ErrorAction SilentlyContinue; Write-Host "=== STDERR ==="; Get-Content "C:\Users\well\AppData\Local\Temp\opencode\wsl_install_stderr.txt" -ErrorAction SilentlyContinue
-echo "\n[flowcraft:exit:$?]"

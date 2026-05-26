@@ -1,9 +1,0 @@
-{
-  "id": "job-1779695768675-ehd9",
-  "command": "wsl bash /mnt/c/Users/well/AppData/Local/Temp/opencode/setup.sh 2>&1",
-  "tmuxSession": "flowcraft-job-1779695768675-ehd9",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:56:08.675Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779695768675-ehd9.log",
-  "completedAt": "2026-05-25T14:10:10.557Z"
-}

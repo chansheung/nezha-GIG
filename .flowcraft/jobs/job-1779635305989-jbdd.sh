@@ -1,3 +1,0 @@
-#!/bin/bash
-python -c "import urllib.request; import zipfile; import os; url='https://github.com/nezhahq/agent/releases/download/v2.0.3/nezha-agent_windows_amd64.zip'; print('Downloading...'); urllib.request.urlretrieve(url, 'F:/nezha/agent/official.zip'); print('Extracting...'); with zipfile.ZipFile('F:/nezha/agent/official.zip', 'r') as z: z.extractall('F:/nezha/agent/official'); print('Done')"
-echo "\n[flowcraft:exit:$?]"

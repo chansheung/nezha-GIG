@@ -1,9 +1,0 @@
-{
-  "id": "job-1779694046859-obuo",
-  "command": "$ErrorActionPreference = \"Continue\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $proc = Start-Process -FilePath \"powershell.exe\" -ArgumentList \"-Command\",\"wsl --install -d Ubuntu --no-launch 2>&1 | Out-File C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_distro_install.log -Encoding utf8\" -Verb RunAs -Wait -PassThru 2>&1; Write-Host \"Exit: $($proc.ExitCode)\"; Start-Sleep -Seconds 2; Get-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_distro_install.log\" -ErrorAction SilentlyContinue",
-  "tmuxSession": "flowcraft-job-1779694046859-obuo",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:27:26.859Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694046859-obuo.log",
-  "completedAt": "2026-05-25T07:27:38.344Z"
-}

@@ -1,9 +1,0 @@
-{
-  "id": "job-1779698015047-q6ld",
-  "command": "& \"C:\\Windows\\System32\\cmd.exe\" /c \"C:\\Program Files\\WSL\\wsl.exe --install -d Ubuntu-24.04\"",
-  "tmuxSession": "flowcraft-job-1779698015047-q6ld",
-  "status": "failed",
-  "startedAt": "2026-05-25T08:33:35.047Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779698015047-q6ld.log",
-  "completedAt": "2026-05-25T14:10:10.870Z"
-}

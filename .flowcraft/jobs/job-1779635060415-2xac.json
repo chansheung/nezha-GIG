@@ -1,9 +1,0 @@
-{
-  "id": "job-1779635060415-2xac",
-  "command": "choco install golang -y --no-progress 2>&1 | Select-String -Pattern \"error|successfully|already|installed\" -SimpleMatch",
-  "tmuxSession": "flowcraft-job-1779635060415-2xac",
-  "status": "failed",
-  "startedAt": "2026-05-24T15:04:20.415Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635060415-2xac.log",
-  "completedAt": "2026-05-24T15:04:36.667Z"
-}

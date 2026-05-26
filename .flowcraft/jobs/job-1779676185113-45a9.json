@@ -1,9 +1,0 @@
-{
-  "id": "job-1779676185113-45a9",
-  "command": "copy F:\\nezha\\agent\\nezha-agent.exe F:\\nezha\\release_temp\\nezha-agent.exe; if ($?) { copy F:\\nezha\\agent\\install.ps1 F:\\nezha\\release_temp\\install.ps1 }; if ($?) { copy F:\\nezha\\agent\\temperature_windows.go F:\\nezha\\release_temp\\temperature_windows.go }; if ($?) { copy F:\\nezha\\agent\\temperature_linux.go F:\\nezha\\release_temp\\temperature_linux.go }",
-  "tmuxSession": "flowcraft-job-1779676185113-45a9",
-  "status": "failed",
-  "startedAt": "2026-05-25T02:29:45.113Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779676185113-45a9.log",
-  "completedAt": "2026-05-25T03:30:33.329Z"
-}

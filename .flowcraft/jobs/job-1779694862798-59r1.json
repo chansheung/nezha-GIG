@@ -1,9 +1,0 @@
-{
-  "id": "job-1779694862798-59r1",
-  "command": "curl.exe -L -o \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\opencode-linux-x64.tar.gz\" \"https://github.com/anomalyco/opencode/releases/download/v1.15.10/opencode-linux-x64.tar.gz\" 2>&1; Write-Host \"EXIT: $LASTEXITCODE\"",
-  "tmuxSession": "flowcraft-job-1779694862798-59r1",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:41:02.798Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694862798-59r1.log",
-  "completedAt": "2026-05-25T07:41:16.367Z"
-}

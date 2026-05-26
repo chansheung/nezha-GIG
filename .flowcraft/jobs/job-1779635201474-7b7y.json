@@ -1,9 +1,0 @@
-{
-  "id": "job-1779635201474-7b7y",
-  "command": "$url = \"https://github.com/nezhahq/agent/releases/download/v2.0.3/nezha-agent_windows_amd64.zip\"\n$zip = \"F:\\nezha\\agent\\official_agent.zip\"\nInvoke-WebRequest -Uri $url -OutFile $zip -UseBasicParsing\nWrite-Host \"Downloaded successfully\"",
-  "tmuxSession": "flowcraft-job-1779635201474-7b7y",
-  "status": "failed",
-  "startedAt": "2026-05-24T15:06:41.474Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635201474-7b7y.log",
-  "completedAt": "2026-05-25T03:30:32.855Z"
-}

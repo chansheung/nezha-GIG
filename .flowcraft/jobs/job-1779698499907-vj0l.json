@@ -1,9 +1,0 @@
-{
-  "id": "job-1779698499907-vj0l",
-  "command": "$wsl = \"C:\\Program Files\\WSL\\wsl.exe\"; & $wsl -d Ubuntu-24.04 bash -c \"curl -fsSL https://opencode.ai/install | bash\"",
-  "tmuxSession": "flowcraft-job-1779698499907-vj0l",
-  "status": "failed",
-  "startedAt": "2026-05-25T08:41:39.907Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779698499907-vj0l.log",
-  "completedAt": "2026-05-25T08:41:44.973Z"
-}

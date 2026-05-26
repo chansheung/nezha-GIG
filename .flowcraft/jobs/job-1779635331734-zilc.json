@@ -1,9 +1,0 @@
-{
-  "id": "job-1779635331734-zilc",
-  "command": "python F:\\nezha\\agent\\download_official.py",
-  "tmuxSession": "flowcraft-job-1779635331734-zilc",
-  "status": "failed",
-  "startedAt": "2026-05-24T15:08:51.734Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635331734-zilc.log",
-  "completedAt": "2026-05-25T03:30:32.903Z"
-}

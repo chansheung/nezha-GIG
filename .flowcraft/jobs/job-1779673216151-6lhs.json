@@ -1,9 +1,0 @@
-{
-  "id": "job-1779673216151-6lhs",
-  "command": "Remove-Item -Recurse -Force \"F:\\nezha\\agent_build_temp\" -ErrorAction SilentlyContinue; echo \"Step 1 done: cleaned old build dir\"",
-  "tmuxSession": "flowcraft-job-1779673216151-6lhs",
-  "status": "failed",
-  "startedAt": "2026-05-25T01:40:16.151Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779673216151-6lhs.log",
-  "completedAt": "2026-05-25T03:30:33.117Z"
-}

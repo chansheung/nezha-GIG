@@ -1,9 +1,0 @@
-{
-  "id": "job-1779697636604-xh6n",
-  "command": "$wsl = \"C:\\Program Files\\WSL\\wsl.exe\"\n& $wsl env -i HOME=/root USER=root bash -c 'export NVM_DIR=\"$HOME/.nvm\" && [ -s \"$NVM_DIR/nvm.sh\" ] && . \"$NVM_DIR/nvm.sh\" && nvm install --lts && node --version && npm --version'",
-  "tmuxSession": "flowcraft-job-1779697636604-xh6n",
-  "status": "failed",
-  "startedAt": "2026-05-25T08:27:16.604Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779697636604-xh6n.log",
-  "completedAt": "2026-05-25T14:10:10.821Z"
-}

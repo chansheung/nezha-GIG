@@ -1,9 +1,0 @@
-{
-  "id": "job-1779672874130-86ep",
-  "command": "$env:Path = \"C:\\Go\\bin;\" + $env:Path; $env:GOOS = \"windows\"; $env:GOARCH = \"amd64\"; Set-Location -LiteralPath \"F:\\nezha\\agent_build_temp\"; go build -o \"F:\\nezha\\agent_build_temp\\nezha-agent.exe\" \"./cmd/agent\"",
-  "tmuxSession": "flowcraft-job-1779672874130-86ep",
-  "status": "failed",
-  "startedAt": "2026-05-25T01:34:34.130Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779672874130-86ep.log",
-  "completedAt": "2026-05-25T03:30:33.047Z"
-}

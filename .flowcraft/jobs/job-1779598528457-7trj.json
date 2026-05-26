@@ -1,9 +1,0 @@
-{
-  "id": "job-1779598528457-7trj",
-  "command": "$env:Path = \"C:\\Go\\bin;\" + $env:Path; Set-Location -LiteralPath \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\test_temp\"; go build ./temperature/ 2>&1",
-  "tmuxSession": "flowcraft-job-1779598528457-7trj",
-  "status": "failed",
-  "startedAt": "2026-05-24T04:55:28.457Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598528457-7trj.log",
-  "completedAt": "2026-05-24T04:56:00.197Z"
-}

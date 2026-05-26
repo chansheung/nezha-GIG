@@ -1,9 +1,0 @@
-{
-  "id": "job-1779693448355-3g3i",
-  "command": "# Let me try to install Ubuntu from the command line\n# First, check if wsl --install -d Ubuntu works\n$script = @'\n# Try to install Ubuntu\nwsl --install -d Ubuntu --no-launch 2>&1 | Out-File \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install.txt\" -Encoding UTF8\n'@\nSet-Content -Path \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\install_ubuntu.ps1\" -Value $script -Encoding UTF8\nStart-Process -FilePath \"powershell.exe\" -ArgumentList \"-ExecutionPolicy Bypass -File C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\install_ubuntu.ps1\" -Verb RunAs -Wait\nStart-Sleep -Seconds 5\nif (Test-Path \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install.txt\") {\n    Get-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install.txt\"\n} else {\n    Write-Host \"No output file created\"\n}",
-  "tmuxSession": "flowcraft-job-1779693448355-3g3i",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:17:28.355Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693448355-3g3i.log",
-  "completedAt": "2026-05-25T07:23:58.780Z"
-}

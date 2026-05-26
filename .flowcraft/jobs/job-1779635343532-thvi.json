@@ -1,9 +1,0 @@
-{
-  "id": "job-1779635343532-thvi",
-  "command": "python F:\\nezha\\agent\\do_download.py",
-  "tmuxSession": "flowcraft-job-1779635343532-thvi",
-  "status": "failed",
-  "startedAt": "2026-05-24T15:09:03.532Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635343532-thvi.log",
-  "completedAt": "2026-05-25T03:30:32.927Z"
-}

@@ -1,3 +1,0 @@
-#!/bin/bash
-$ErrorActionPreference = "SilentlyContinue"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $p = Start-Process -FilePath "cmd.exe" -ArgumentList "/c","wsl --install -d Ubuntu --no-launch" -NoNewWindow -Wait -PassThru -RedirectStandardOutput "C:\Users\well\AppData\Local\Temp\opencode\ubuntu_out.txt" -RedirectStandardError "C:\Users\well\AppData\Local\Temp\opencode\ubuntu_err.txt" 2>&1; Write-Host "Exit: $($p.ExitCode)"; Write-Host "--- OUT ---"; Get-Content "C:\Users\well\AppData\Local\Temp\opencode\ubuntu_out.txt" -ErrorAction SilentlyContinue; Write-Host "--- ERR ---"; Get-Content "C:\Users\well\AppData\Local\Temp\opencode\ubuntu_err.txt" -ErrorAction SilentlyContinue
-echo "\n[flowcraft:exit:$?]"

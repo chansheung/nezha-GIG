@@ -1,9 +1,0 @@
-{
-  "id": "job-1779695896594-vmoo",
-  "command": "wsl -e bash /mnt/c/Users/well/AppData/Local/Temp/opencode/setup_wsl.sh",
-  "tmuxSession": "flowcraft-job-1779695896594-vmoo",
-  "status": "failed",
-  "startedAt": "2026-05-25T07:58:16.594Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779695896594-vmoo.log",
-  "completedAt": "2026-05-25T14:10:10.676Z"
-}

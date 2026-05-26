@@ -1,9 +1,0 @@
-{
-  "id": "job-1779673382770-b4je",
-  "command": "& \"C:\\Go\\bin\\go.exe\" version -m \"F:\\nezha\\agent\\nezha-agent.exe\" 2>&1 | Select-String -Pattern \"mod|build\"",
-  "tmuxSession": "flowcraft-job-1779673382770-b4je",
-  "status": "failed",
-  "startedAt": "2026-05-25T01:43:02.770Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779673382770-b4je.log",
-  "completedAt": "2026-05-25T03:30:33.164Z"
-}

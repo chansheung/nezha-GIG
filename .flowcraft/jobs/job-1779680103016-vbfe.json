@@ -1,9 +1,0 @@
-{
-  "id": "job-1779680103016-vbfe",
-  "command": "npm install @ai-sdk/openai-compatible",
-  "tmuxSession": "flowcraft-job-1779680103016-vbfe",
-  "status": "failed",
-  "startedAt": "2026-05-25T03:35:03.016Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779680103016-vbfe.log",
-  "completedAt": "2026-05-25T03:36:00.166Z"
-}

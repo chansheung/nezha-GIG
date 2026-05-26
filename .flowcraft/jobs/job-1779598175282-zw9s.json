@@ -1,9 +1,0 @@
-{
-  "id": "job-1779598175282-zw9s",
-  "command": "powershell -ExecutionPolicy Bypass -File \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\build.ps1\"",
-  "tmuxSession": "flowcraft-job-1779598175282-zw9s",
-  "status": "failed",
-  "startedAt": "2026-05-24T04:49:35.282Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779598175282-zw9s.log",
-  "completedAt": "2026-05-24T04:52:10.301Z"
-}

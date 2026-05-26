@@ -1,3 +1,0 @@
-#!/bin/bash
-$process = Start-Process -FilePath "C:\Program Files\WSL\wsl.exe" -ArgumentList "--install", "-d", "Ubuntu-24.04" -NoNewWindow -RedirectStandardOutput "$env:TEMP\wsl_install_out.txt" -RedirectStandardError "$env:TEMP\wsl_install_err.txt" -Wait; Get-Content "$env:TEMP\wsl_install_out.txt" -ErrorAction SilentlyContinue; Write-Host "=== STDERR ==="; Get-Content "$env:TEMP\wsl_install_err.txt" -ErrorAction SilentlyContinue
-echo "\n[flowcraft:exit:$?]"
