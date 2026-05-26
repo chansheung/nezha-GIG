@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694754466-vncj",
+  "command": "$baseDir = \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\"\n$ProgressPreference = 'SilentlyContinue'\nWrite-Host \"Fetching latest version tag...\"\n$releaseInfo = Invoke-RestMethod -Uri \"https://api.github.com/repos/anomalyco/opencode/releases/latest\" -UseBasicParsing\n$version = $releaseInfo.tag_name -replace '^v',''\nWrite-Host \"Latest version: $version\"\n$downloadUrl = \"https://github.com/anomalyco/opencode/releases/latest/download/opencode-linux-x64.tar.gz\"\nWrite-Host \"Downloading from: $downloadUrl\"\nInvoke-WebRequest -Uri $downloadUrl -OutFile \"$baseDir\\opencode-linux-x64.tar.gz\" -UseBasicParsing\nif (Test-Path \"$baseDir\\opencode-linux-x64.tar.gz\") {\n    $size = (Get-Item \"$baseDir\\opencode-linux-x64.tar.gz\").Length / 1MB\n    Write-Host \"Download complete! Size: $([math]::Round($size, 2)) MB\"\n} else {\n    Write-Host \"Download FAILED!\"\n}",
+  "tmuxSession": "flowcraft-job-1779694754466-vncj",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:39:14.466Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694754466-vncj.log",
+  "completedAt": "2026-05-25T07:39:27.945Z"
+}

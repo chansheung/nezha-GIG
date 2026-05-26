@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694797517-34y3",
+  "command": "$ProgressPreference = 'SilentlyContinue'\n$baseDir = \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\"\n$url = \"https://github.com/anomalyco/opencode/releases/download/v1.15.10/opencode-linux-x64.tar.gz\"\nWrite-Host \"Downloading OpenCode v1.15.10 for Linux x64...\"\nWrite-Host \"URL: $url\"\ntry {\n    Invoke-WebRequest -Uri $url -OutFile \"$baseDir\\opencode-linux-x64.tar.gz\" -UseBasicParsing\n    $size = (Get-Item \"$baseDir\\opencode-linux-x64.tar.gz\").Length / 1MB\n    Write-Host \"SUCCESS! Size: $([math]::Round($size, 2)) MB\"\n} catch {\n    Write-Host \"FAILED: $($_.Exception.Message)\"\n    Write-Host \"StatusCode: $($_.Exception.Response.StatusCode)\"\n}",
+  "tmuxSession": "flowcraft-job-1779694797517-34y3",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:39:57.517Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694797517-34y3.log",
+  "completedAt": "2026-05-25T07:40:11.715Z"
+}

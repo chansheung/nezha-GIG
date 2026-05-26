@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693316160-8x7o",
+  "command": "wsl --install --no-distribution 2>&1",
+  "tmuxSession": "flowcraft-job-1779693316160-8x7o",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:15:16.160Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693316160-8x7o.log",
+  "completedAt": "2026-05-25T07:15:27.770Z"
+}

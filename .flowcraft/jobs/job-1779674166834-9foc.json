@@ -2,7 +2,8 @@
   "id": "job-1779674166834-9foc",
   "command": "Remove-Item -LiteralPath \"F:\\nezha\\agent_build_temp\" -Recurse -Force; Write-Host \"Cleaned up build temp directory\"",
   "tmuxSession": "flowcraft-job-1779674166834-9foc",
-  "status": "running",
+  "status": "failed",
   "startedAt": "2026-05-25T01:56:06.834Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779674166834-9foc.log"
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779674166834-9foc.log",
+  "completedAt": "2026-05-25T03:30:33.258Z"
 }

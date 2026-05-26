@@ -1,0 +1,9 @@
+{
+  "id": "job-1779696611291-z27l",
+  "command": "# Let me check if maybe the Windows version is too old for this WSL version\n# Build 19045 = Windows 10 22H2\n# WSL Store version 2.7.3.0 should work on this build\n\n# Let me check if the Windows optional feature \"VirtualMachinePlatform\" is enabled\n# This is required for WSL2\nGet-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform 2>$null\nGet-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux 2>$null",
+  "tmuxSession": "flowcraft-job-1779696611291-z27l",
+  "status": "failed",
+  "startedAt": "2026-05-25T08:10:11.291Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779696611291-z27l.log",
+  "completedAt": "2026-05-25T14:10:10.700Z"
+}

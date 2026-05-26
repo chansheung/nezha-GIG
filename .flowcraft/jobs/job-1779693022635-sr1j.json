@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693022635-sr1j",
+  "command": "wsl bash -c \"which opencode 2>/dev/null; if [ $? -eq 0 ]; then echo 'OpenCode already installed'; opencode --version; else echo 'Installing OpenCode...'; curl -fsSL https://opencode.ai/install | bash; fi\"",
+  "tmuxSession": "flowcraft-job-1779693022635-sr1j",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:10:22.635Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693022635-sr1j.log",
+  "completedAt": "2026-05-25T07:10:46.153Z"
+}

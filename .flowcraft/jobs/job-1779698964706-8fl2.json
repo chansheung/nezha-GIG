@@ -1,0 +1,9 @@
+{
+  "id": "job-1779698964706-8fl2",
+  "command": "cmd /c \"\"C:\\Program Files\\WSL\\wsl.exe\" -d Ubuntu-24.04 bash -c \"cp /mnt/c/Users/well/AppData/Local/Temp/opencode/install_all.sh /tmp/install_all.sh\"\"",
+  "tmuxSession": "flowcraft-job-1779698964706-8fl2",
+  "status": "failed",
+  "startedAt": "2026-05-25T08:49:24.706Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779698964706-8fl2.log",
+  "completedAt": "2026-05-25T14:10:11.040Z"
+}

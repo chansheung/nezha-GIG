@@ -2,7 +2,8 @@
   "id": "job-1779635413112-cy75",
   "command": "& \"F:\\nezha\\agent\\install.ps1\" -Server \"172.30.0.10:8008\" -ClientSecret \"0y5RDcFV3BDwUbcgqn3mpLjiWYKQWV5H\"",
   "tmuxSession": "flowcraft-job-1779635413112-cy75",
-  "status": "running",
+  "status": "failed",
   "startedAt": "2026-05-24T15:10:13.112Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635413112-cy75.log"
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779635413112-cy75.log",
+  "completedAt": "2026-05-25T03:30:32.951Z"
 }

@@ -84,10 +84,10 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 | 包名 | 包含内容 |
 |------|---------|
-| `nezha-dashboard-v0.0.2.tar.gz` | Dashboard 二进制 + Linux 安装脚本 |
-| `nezha-agent-v0.0.2.tar.gz` | Agent 二进制 + Linux 安装脚本 + 温度源码 |
-| `nezha-dashboard-v0.0.2-windows-amd64.zip` | Dashboard 二进制 + Windows 安装脚本 |
-| `nezha-agent-v0.0.2-windows-amd64.zip` | Agent 二进制 + Windows 安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.3.tar.gz` | Dashboard 二进制 + Linux 安装脚本 |
+| `nezha-agent-v0.0.3.tar.gz` | Agent 二进制 + Linux 安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.3-windows-amd64.zip` | Dashboard 二进制 + Windows 安装脚本 |
+| `nezha-agent-v0.0.3-windows-amd64.zip` | Agent 二进制 + Windows 安装脚本 + 温度源码 |
 
 ## 安装方法
 
@@ -95,7 +95,7 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 ```bash
 # 下载并解压
-tar xzf nezha-dashboard-v0.0.2.tar.gz
+tar xzf nezha-dashboard-v0.0.3.tar.gz
 cd dashboard
 
 # 一键安装
@@ -135,7 +135,7 @@ sudo systemctl start nezha-dashboard.service
 
 ```bash
 # 下载并解压
-tar xzf nezha-agent-v0.0.2.tar.gz
+tar xzf nezha-agent-v0.0.3.tar.gz
 cd agent
 
 # 一键安装（支持全新安装和替换升级）
@@ -157,7 +157,7 @@ sudo NZ_SERVER=your-server:8008 NZ_CLIENT_SECRET=your-secret bash install.sh
 
 ```powershell
 # 下载并解压
-Expand-Archive nezha-dashboard-v0.0.2-windows-amd64.zip -DestinationPath dashboard
+Expand-Archive nezha-dashboard-v0.0.3-windows-amd64.zip -DestinationPath dashboard
 cd dashboard
 
 # 以管理员身份运行安装脚本
@@ -180,7 +180,7 @@ Start-Service NezhaDashboard
 
 ```powershell
 # 下载并解压
-Expand-Archive nezha-agent-v0.0.2-windows-amd64.zip -DestinationPath agent
+Expand-Archive nezha-agent-v0.0.3-windows-amd64.zip -DestinationPath agent
 cd agent
 
 # 以管理员身份运行安装脚本

@@ -1,0 +1,9 @@
+{
+  "id": "job-1779695874723-pn7d",
+  "command": "wsl -e bash /mnt/c/Users/well/AppData/Local/Temp/opencode/setup_wsl.sh 2>$null; if ($?) { wsl -e cat /tmp/wsl_setup_output.txt 2>$null }",
+  "tmuxSession": "flowcraft-job-1779695874723-pn7d",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:57:54.724Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779695874723-pn7d.log",
+  "completedAt": "2026-05-25T14:10:10.629Z"
+}

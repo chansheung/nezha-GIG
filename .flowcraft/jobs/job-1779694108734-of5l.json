@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694108734-of5l",
+  "command": "$outLog = \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_install_log.txt\"; $scriptContent = 'chcp 65001 >nul 2>&1\nwsl --install -d Ubuntu --no-launch > \"' + $outLog + '\" 2>&1\necho DONE >> \"' + $outLog + '\"\n'; Set-Content -Path \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\install_ubuntu.cmd\" -Value $scriptContent -Encoding ASCII; Write-Host \"Script created. Running elevated...\"",
+  "tmuxSession": "flowcraft-job-1779694108734-of5l",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:28:28.734Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694108734-of5l.log",
+  "completedAt": "2026-05-25T07:28:42.863Z"
+}

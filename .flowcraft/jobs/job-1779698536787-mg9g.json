@@ -1,0 +1,9 @@
+{
+  "id": "job-1779698536787-mg9g",
+  "command": "$env:WSLPATH = \"C:\\Program Files\\WSL\\wsl.exe\"; & $env:WSLPATH -d Ubuntu-24.04 bash -c \"curl -fsSL https://opencode.ai/install | bash\"",
+  "tmuxSession": "flowcraft-job-1779698536787-mg9g",
+  "status": "failed",
+  "startedAt": "2026-05-25T08:42:16.787Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779698536787-mg9g.log",
+  "completedAt": "2026-05-25T14:10:10.968Z"
+}

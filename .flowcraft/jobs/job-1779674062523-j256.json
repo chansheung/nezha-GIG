@@ -2,7 +2,8 @@
   "id": "job-1779674062523-j256",
   "command": "go build -ldflags=\"-s -w -X main.arch=amd64 -X github.com/nezhahq/agent/pkg/monitor.Version=v2.0.3-custom\" -o nezha-agent.exe ./cmd/agent",
   "tmuxSession": "flowcraft-job-1779674062523-j256",
-  "status": "running",
+  "status": "failed",
   "startedAt": "2026-05-25T01:54:22.523Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779674062523-j256.log"
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779674062523-j256.log",
+  "completedAt": "2026-05-25T03:30:33.234Z"
 }

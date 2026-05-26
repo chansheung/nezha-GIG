@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694890655-loz3",
+  "command": "$ErrorActionPreference = \"SilentlyContinue\"; $result = curl.exe -L -v -o NUL \"https://github.com/anomalyco/opencode/releases/download/v1.15.10/opencode-linux-x64.tar.gz\" 2>&1; $result | Select-Object -Last 20",
+  "tmuxSession": "flowcraft-job-1779694890655-loz3",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:41:30.655Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694890655-loz3.log",
+  "completedAt": "2026-05-25T07:41:43.394Z"
+}

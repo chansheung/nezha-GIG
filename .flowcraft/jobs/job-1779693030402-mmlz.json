@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693030402-mmlz",
+  "command": "wsl bash -c \"curl -fsSL https://opencode.ai/install | bash\"",
+  "tmuxSession": "flowcraft-job-1779693030402-mmlz",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:10:30.402Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693030402-mmlz.log",
+  "completedAt": "2026-05-25T07:10:46.209Z"
+}

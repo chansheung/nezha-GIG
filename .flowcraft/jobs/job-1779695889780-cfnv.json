@@ -1,0 +1,9 @@
+{
+  "id": "job-1779695889780-cfnv",
+  "command": "wsl -e bash /mnt/c/Users/well/AppData/Local/Temp/opencode/setup_wsl.sh 2>&1 | Out-String",
+  "tmuxSession": "flowcraft-job-1779695889780-cfnv",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:58:09.780Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779695889780-cfnv.log",
+  "completedAt": "2026-05-25T14:10:10.653Z"
+}

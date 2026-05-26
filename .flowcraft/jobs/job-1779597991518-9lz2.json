@@ -2,7 +2,8 @@
   "id": "job-1779597991518-9lz2",
   "command": "choco install golang -y",
   "tmuxSession": "flowcraft-job-1779597991518-9lz2",
-  "status": "running",
+  "status": "failed",
   "startedAt": "2026-05-24T04:46:31.518Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779597991518-9lz2.log"
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779597991518-9lz2.log",
+  "completedAt": "2026-05-25T03:30:32.808Z"
 }

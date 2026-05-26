@@ -1,0 +1,9 @@
+{
+  "id": "job-1779696680838-gptu",
+  "command": "# Let me try unregistering and re-registering the Ubuntu distro\n# First, check if there are important things to backup\n# Actually, let me try --install first to see if WSL can be repaired\n\n# Let's try wsl --install --no-distribution to update the WSL platform\n# Actually no, let's not break anything. Let me try one more thing:\n# Run wsl with WSL_DEBUG=true to get more info\n\n$psi = New-Object System.Diagnostics.ProcessStartInfo\n$psi.FileName = \"wsl.exe\"\n$psi.Arguments = \"-e true\"\n$psi.UseShellExecute = $false\n$psi.RedirectStandardOutput = $true\n$psi.RedirectStandardError = $true\n$psi.CreateNoWindow = $true\n$psi.EnvironmentVariables[\"WSL_DEBUG\"] = \"1\"\n$psi.StandardOutputEncoding = [System.Text.Encoding]::UTF8\n$psi.StandardErrorEncoding = [System.Text.Encoding]::UTF8\n$proc = [System.Diagnostics.Process]::Start($psi)\n$stdout = $proc.StandardOutput.ReadToEnd()\n$stderr = $proc.StandardError.ReadToEnd()\n$proc.WaitForExit()\nWrite-Host \"EXIT: $($proc.ExitCode)\"\nWrite-Host \"STDOUT: [$stdout]\"\nWrite-Host \"STDERR: [$stderr]\"\n\n# Also, let me check if maybe it's a Windows insider / version issue\n[System.Environment]::OSVersion.Version\n(Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").DisplayVersion\n(Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuild",
+  "tmuxSession": "flowcraft-job-1779696680838-gptu",
+  "status": "failed",
+  "startedAt": "2026-05-25T08:11:20.838Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779696680838-gptu.log",
+  "completedAt": "2026-05-25T14:10:10.724Z"
+}

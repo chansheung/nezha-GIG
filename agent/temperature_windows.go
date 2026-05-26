@@ -13,6 +13,8 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"sync"
+	"time"
 
 	"github.com/nezhahq/agent/model"
 	"github.com/shirou/gopsutil/v4/sensors"
@@ -23,6 +25,12 @@ var sensorIgnoreList = []string{
 	"PMU tcal",
 	"noname",
 }
+
+var (
+	getStateCache     []model.SensorTemperature
+	getStateCacheTime time.Time
+	getStateCacheMu   sync.Mutex
+)
 
 // MSAcpiThermalZoneTemperature represents ACPI thermal zone temperature.
 type MSAcpiThermalZoneTemperature struct {
@@ -234,10 +242,14 @@ func getNvidiaGpuTemps() []model.SensorTemperature {
 		return nil
 	}
 
-	out, err := exec.Command(nvidiaSmi, "--query-gpu=index,name,temperature.gpu,memory.used,memory.total", "--format=csv,noheader,nounits").Output()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	out, err := exec.CommandContext(ctx, nvidiaSmi, "--query-gpu=index,name,temperature.gpu,memory.used,memory.total", "--format=csv,noheader,nounits").Output()
 	if err != nil {
 		return nil
 	}
+
 	var result []model.SensorTemperature
 	for _, line := range strings.Split(strings.TrimSpace(string(out)), "\n") {
 		line = strings.TrimSpace(line)
@@ -279,6 +291,7 @@ func getNvidiaGpuTemps() []model.SensorTemperature {
 			})
 		}
 	}
+
 	return result
 }
 
@@ -296,7 +309,10 @@ func getDiskTemperaturesPS() []model.SensorTemperature {
     }
 } | ConvertTo-Json -Compress`
 
-	cmd := exec.Command("powershell", "-NoProfile", "-Command", psScript)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	cmd := exec.CommandContext(ctx, "powershell", "-NoProfile", "-Command", psScript)
 	out, err := cmd.Output()
 	if err != nil {
 		return nil
@@ -324,12 +340,10 @@ func getDiskTemperaturesPS() []model.SensorTemperature {
 		if d.Temperature <= 0 || d.Temperature > 150 {
 			continue
 		}
-		// Use FriendlyName as the sensor name - this is already clean (e.g. "sn580")
 		name := strings.TrimSpace(d.FriendlyName)
 		if name == "" {
 			name = "Disk_" + d.DeviceId
 		} else {
-			// Replace spaces with underscores for URL/sensor name safety
 			name = strings.ReplaceAll(name, " ", "_")
 		}
 		result = append(result, model.SensorTemperature{
@@ -397,12 +411,11 @@ func getCpuTemperaturesPS() []model.SensorTemperature {
 	return result
 }
 
-// GetState returns all sensor temperatures on Windows.
-func GetState(_ context.Context) ([]model.SensorTemperature, error) {
+// doFullCollection runs all sensor queries and returns deduplicated results.
+func doFullCollection() []model.SensorTemperature {
 	var tempStat []model.SensorTemperature
 	seen := make(map[string]bool)
 
-	// Helper to add deduplicated entries
 	addUnique := func(t model.SensorTemperature) {
 		if t.Temperature <= 0 || seen[t.Name] {
 			return
@@ -414,52 +427,90 @@ func GetState(_ context.Context) ([]model.SensorTemperature, error) {
 		tempStat = append(tempStat, t)
 	}
 
-	// 1. CPU thermal zones via Win32_PerfFormattedData_Counters_ThermalZoneInformation (Win 10/11)
+	// 1. CPU thermal zones via Win32_PerfFormattedData_Counters_ThermalZoneInformation
 	for _, t := range getCpuTemperatures() {
 		addUnique(t)
 	}
 
-	// 2. CPU via ACPI thermal zones (fallback)
+	// 2. CPU via ACPI thermal zones
 	for _, t := range getACPIThermalZones() {
 		addUnique(t)
 	}
 
-	// 3. Disk temperatures via MSFT_StorageReliabilityCounter (most reliable on Win 10/11)
+	// 3. Disk temperatures via MSFT_StorageReliabilityCounter
 	for _, t := range getDiskTemperaturesStorage() {
 		addUnique(t)
 	}
 
-	// 3a. Disk temperatures via PowerShell Get-PhysicalDisk (most reliable on Win desktop)
-	for _, t := range getDiskTemperaturesPS() {
-		addUnique(t)
-	}
-
-	// 4. Disk temperatures via MSStorageDriver_FailurePredictStatus (fallback)
+	// 4. Disk temperatures via MSStorageDriver_FailurePredictStatus
 	for _, t := range getDiskTemperatures() {
 		addUnique(t)
 	}
 
-	// 5. GPU from nvidia-smi
-	for _, t := range getNvidiaGpuTemps() {
+	// 5. Disk temperatures via PowerShell
+	for _, t := range getDiskTemperaturesPS() {
 		addUnique(t)
 	}
 
-	// 5a. CPU via typeperf performance counters (fallback)
+	// 6. CPU via typeperf
 	for _, t := range getCpuTemperaturesPS() {
 		addUnique(t)
 	}
 
-	// 6. If we still have no data, try gopsutil as broad fallback
+	// 7. GPU from nvidia-smi
+	for _, t := range getNvidiaGpuTemps() {
+		addUnique(t)
+	}
+
+	// 8. gopsutil fallback if we have NO data at all
 	if len(tempStat) == 0 {
 		for _, t := range getGopsutilTemperatures() {
 			addUnique(t)
 		}
 	}
 
-	// Sort by name
 	slices.SortFunc(tempStat, func(a, b model.SensorTemperature) int {
 		return strings.Compare(a.Name, b.Name)
 	})
 
-	return tempStat, nil
+	return tempStat
+}
+
+// GetState returns all sensor temperatures on Windows with top-level caching.
+func GetState(_ context.Context) ([]model.SensorTemperature, error) {
+	getStateCacheMu.Lock()
+
+	// If cache is fresh (within 30 seconds), return it immediately
+	if getStateCache != nil && time.Since(getStateCacheTime) < 30*time.Second {
+		cached := getStateCache
+		getStateCacheMu.Unlock()
+		return cached, nil
+	}
+
+	// If cache is stale but there's NO cached data, do a full refresh NOW
+	// (This happens on the very first call)
+	if getStateCache == nil {
+		getStateCacheMu.Unlock()
+		result := doFullCollection()
+		getStateCacheMu.Lock()
+		getStateCache = result
+		getStateCacheTime = time.Now()
+		getStateCacheMu.Unlock()
+		return result, nil
+	}
+
+	// Cache is stale but we have old data:
+	// Launch a background refresh and return the stale data immediately
+	staleData := getStateCache
+	getStateCacheMu.Unlock()
+
+	go func() {
+		result := doFullCollection()
+		getStateCacheMu.Lock()
+		getStateCache = result
+		getStateCacheTime = time.Now()
+		getStateCacheMu.Unlock()
+	}()
+
+	return staleData, nil
 }

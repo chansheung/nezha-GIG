@@ -1,0 +1,8 @@
+{
+  "id": "job-1779782211400-mkjj",
+  "command": "Copy-Item -Path \"F:\\nezha\\agent\\install.ps1\" -Destination \"F:\\nezha\\release_temp\\install.ps1\"",
+  "tmuxSession": "flowcraft-job-1779782211400-mkjj",
+  "status": "running",
+  "startedAt": "2026-05-26T07:56:51.400Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779782211400-mkjj.log"
+}

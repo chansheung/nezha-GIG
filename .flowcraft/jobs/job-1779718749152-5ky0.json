@@ -1,0 +1,9 @@
+{
+  "id": "job-1779718749152-5ky0",
+  "command": "go version -m \"F:\\nezha\\agent\\nezha-agent.exe\" 2>&1 | Select-String -Pattern \"mod|build|arch\"",
+  "tmuxSession": "flowcraft-job-1779718749152-5ky0",
+  "status": "failed",
+  "startedAt": "2026-05-25T14:19:09.152Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779718749152-5ky0.log",
+  "completedAt": "2026-05-26T07:51:55.233Z"
+}

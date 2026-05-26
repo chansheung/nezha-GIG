@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693972652-fes1",
+  "command": "$script = @'\n$ErrorActionPreference = \"Continue\"\n$output = & cmd /c \"wsl --install -d Ubuntu 2>&1\"\n$output | Out-File \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_install_result.txt\" -Encoding utf8\n'@\nSet-Content -Path \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\do_install_ubuntu.ps1\" -Value $script -Encoding UTF8\nStart-Process -FilePath \"powershell.exe\" -ArgumentList \"-ExecutionPolicy\",\"Bypass\",\"-File\",\"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\do_install_ubuntu.ps1\" -Verb RunAs -Wait\nStart-Sleep -Seconds 3\nGet-Content \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\ubuntu_install_result.txt\" -ErrorAction SilentlyContinue",
+  "tmuxSession": "flowcraft-job-1779693972652-fes1",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:26:12.652Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693972652-fes1.log",
+  "completedAt": "2026-05-25T07:26:29.265Z"
+}

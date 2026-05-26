@@ -1,0 +1,3 @@
+#!/bin/bash
+$ErrorActionPreference = "Continue"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $proc = Start-Process -FilePath "powershell.exe" -ArgumentList "-Command","wsl --install -d Ubuntu --no-launch 2>&1 | Out-File C:\Users\well\AppData\Local\Temp\opencode\wsl_distro_install.log -Encoding utf8" -Verb RunAs -Wait -PassThru 2>&1; Write-Host "Exit: $($proc.ExitCode)"; Start-Sleep -Seconds 2; Get-Content "C:\Users\well\AppData\Local\Temp\opencode\wsl_distro_install.log" -ErrorAction SilentlyContinue
+echo "\n[flowcraft:exit:$?]"

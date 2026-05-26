@@ -1,0 +1,9 @@
+{
+  "id": "job-1779782190813-0pq1",
+  "command": "copy F:\\nezha\\agent\\install.ps1 F:\\nezha\\release_temp\\install.ps1; if ($?) { Write-Host \"copy install.ps1 OK\" }",
+  "tmuxSession": "flowcraft-job-1779782190813-0pq1",
+  "status": "failed",
+  "startedAt": "2026-05-26T07:56:30.813Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779782190813-0pq1.log",
+  "completedAt": "2026-05-26T07:56:56.046Z"
+}

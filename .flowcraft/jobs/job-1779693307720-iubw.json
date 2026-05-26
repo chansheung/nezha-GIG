@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693307720-iubw",
+  "command": "# The error is always the same - this looks like WSL is fundamentally broken\n# Let me try to install WSL from scratch with admin\nStart-Process -FilePath \"powershell.exe\" -ArgumentList \"-Command\",\"wsl --install --no-distribution\" -Verb RunAs -Wait 2>&1",
+  "tmuxSession": "flowcraft-job-1779693307720-iubw",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:15:07.720Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693307720-iubw.log",
+  "completedAt": "2026-05-25T07:25:08.226Z"
+}

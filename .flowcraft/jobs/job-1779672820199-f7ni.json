@@ -2,7 +2,8 @@
   "id": "job-1779672820199-f7ni",
   "command": "$env:Path = \"C:\\Go\\bin;\" + $env:Path; $env:GOOS = \"windows\"; $env:GOARCH = \"amd64\"; go build -o F:\\nezha\\agent\\nezha-agent.exe ./cmd/agent 2>&1",
   "tmuxSession": "flowcraft-job-1779672820199-f7ni",
-  "status": "running",
+  "status": "failed",
   "startedAt": "2026-05-25T01:33:40.199Z",
-  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779672820199-f7ni.log"
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779672820199-f7ni.log",
+  "completedAt": "2026-05-25T03:30:33.021Z"
 }

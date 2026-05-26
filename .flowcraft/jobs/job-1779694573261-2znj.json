@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694573261-2znj",
+  "command": "$ErrorActionPreference = \"SilentlyContinue\"\n$cmd = 'export PATH=\"$HOME/.opencode/bin:$PATH\"; curl -fsSL https://opencode.ai/install | bash 2>&1'\n$pinfo = New-Object System.Diagnostics.ProcessStartInfo\n$pinfo.FileName = \"C:\\Program Files\\WSL\\wsl.exe\"\n$pinfo.Arguments = \"-d Ubuntu -- bash -c `\"$cmd`\"\"\n$pinfo.RedirectStandardOutput = $true\n$pinfo.RedirectStandardError = $true\n$pinfo.UseShellExecute = $false\n$pinfo.CreateNoWindow = $true\n$pinfo.StandardOutputEncoding = [System.Text.Encoding]::UTF8\n$pinfo.StandardErrorEncoding = [System.Text.Encoding]::Default\n$p = New-Object System.Diagnostics.Process\n$p.StartInfo = $pinfo\n$p.Start() | Out-Null\n$stdout = $p.StandardOutput.ReadToEnd()\n$stderr = $p.StandardError.ReadToEnd()\n$p.WaitForExit()\nWrite-Host \"Exit: $($p.ExitCode)\"\nWrite-Host \"=== STDOUT ===\"\nWrite-Host $stdout\nif ($stderr) { Write-Host \"=== STDERR ===\"; Write-Host $stderr }",
+  "tmuxSession": "flowcraft-job-1779694573261-2znj",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:36:13.261Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694573261-2znj.log",
+  "completedAt": "2026-05-25T07:36:39.434Z"
+}

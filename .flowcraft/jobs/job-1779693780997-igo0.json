@@ -1,0 +1,9 @@
+{
+  "id": "job-1779693780997-igo0",
+  "command": "wsl bash -c \"curl -fsSL https://opencode.ai/install | bash\"",
+  "tmuxSession": "flowcraft-job-1779693780997-igo0",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:23:00.997Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779693780997-igo0.log",
+  "completedAt": "2026-05-25T07:23:46.550Z"
+}

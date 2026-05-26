@@ -1,0 +1,9 @@
+{
+  "id": "job-1779694319057-h5cm",
+  "command": "$baseDir = \"C:\\Users\\well\\AppData\\Local\\Temp\\opencode\\wsl_ubuntu\"\n$installDir = \"$baseDir\\distro\"\nif (-not (Test-Path $installDir)) { New-Item -ItemType Directory -Path $installDir -Force | Out-Null }\nWrite-Host \"Importing Ubuntu into WSL...\"\nWrite-Host \"  tarball: $baseDir\\ubuntu-rootfs.tar.xz\"\nWrite-Host \"  install: $installDir\"\n& \"C:\\Windows\\system32\\wsl.exe\" --import Ubuntu \"$installDir\" \"$baseDir\\ubuntu-rootfs.tar.xz\" 2>&1",
+  "tmuxSession": "flowcraft-job-1779694319057-h5cm",
+  "status": "failed",
+  "startedAt": "2026-05-25T07:31:59.057Z",
+  "logFile": "F:\\nezha\\.flowcraft\\jobs\\job-1779694319057-h5cm.log",
+  "completedAt": "2026-05-25T07:32:13.226Z"
+}
