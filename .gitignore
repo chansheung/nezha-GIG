@@ -21,3 +21,11 @@ Thumbs.db
 
 # Flowcraft
 .flowcraft/
+
+# Build outputs
+build/admin-dist/*
+!build/admin-dist/.dockerkeep
+dist/
+
+# Vendor binaries (downloaded at build time)
+build/vendor/

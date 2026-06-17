@@ -1,7 +1,30 @@
 # Nezha Monitoring 自定义版
 
 > 基于 [nezhahq/nezha](https://github.com/nezhahq/nezha) 和 [nezhahq/agent](https://github.com/nezhahq/agent) 修改
-> 上游版本: v2.0.3
+> 上游版本: v2.0.3 (✅ v0.0.4 已包含 CVE-2026-53519 修复)
+
+## ⚠️ 安全公告 (CVE-2026-53519)
+
+> **本仓库基于上游 v2.0.3，受 CVE-2026-53519 路径穿越漏洞影响 (CVSS 9.1)。**
+> 漏洞允许未认证读取 `config.yaml`、`sqlite.db` 等敏感文件。
+> 
+> **修复方案**: 采用**定向补丁**（不升级版本）——仅在 v2.0.3 源码上应用路径穿越修复，
+> 完整保留现有行为与自定义（含 GPU 面板）。详见 [build/README.md](build/README.md)。
+> 
+> ```bash
+> cd build && bash build.sh   # 需要 Docker，产出 Linux amd64 二进制
+> ```
+> 
+> **保留 GPU 面板**: 构建前运行 `./build/extract-frontend.sh http://你的Dashboard:8008`
+> 提取现有自定义前端，`build.sh` 会自动使用。
+> 
+> 临时缓解: 在 Nginx 反代层加载 [dashboard/nginx-security.conf](dashboard/nginx-security.conf)。
+
+## ⚠️ Windows 版本已知问题
+
+> **Windows 版本存在异常资源占用问题（未修复）**
+> 
+> 建议生产环境使用 Linux 版本。Windows 版本仅供测试。
 
 ## 功能修改
 
@@ -68,6 +91,8 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 ### Windows amd64
 
+> **⚠️ Windows 版本存在异常资源占用问题（未修复）**
+
 | 项目 | 详情 |
 |------|------|
 | 操作系统 | Windows 11 |
@@ -84,10 +109,10 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 | 包名 | 包含内容 |
 |------|---------|
-| `nezha-dashboard-v0.0.3.tar.gz` | Dashboard 二进制 + Linux 安装脚本 |
-| `nezha-agent-v0.0.3.tar.gz` | Agent 二进制 + Linux 安装脚本 + 温度源码 |
-| `nezha-dashboard-v0.0.3-windows-amd64.zip` | Dashboard 二进制 + Windows 安装脚本 |
-| `nezha-agent-v0.0.3-windows-amd64.zip` | Agent 二进制 + Windows 安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.4.tar.gz` | Dashboard 二进制 + Linux 安装脚本 |
+| `nezha-agent-v0.0.4.tar.gz` | Agent 二进制 + Linux 安装脚本 + 温度源码 |
+| `nezha-dashboard-v0.0.4-windows-amd64.zip` | Dashboard 二进制 + Windows 安装脚本 |
+| `nezha-agent-v0.0.4-windows-amd64.zip` | Agent 二进制 + Windows 安装脚本 + 温度源码 |
 
 ## 安装方法
 
@@ -95,7 +120,7 @@ NVMe 硬盘作为 mdadm RAID0 成员时，自动解析所属 RAID 设备的挂�
 
 ```bash
 # 下载并解压
-tar xzf nezha-dashboard-v0.0.3.tar.gz
+tar xzf nezha-dashboard-v0.0.4.tar.gz
 cd dashboard
 
 # 一键安装
@@ -135,7 +160,7 @@ sudo systemctl start nezha-dashboard.service
 
 ```bash
 # 下载并解压
-tar xzf nezha-agent-v0.0.3.tar.gz
+tar xzf nezha-agent-v0.0.4.tar.gz
 cd agent
 
 # 一键安装（支持全新安装和替换升级）
@@ -155,9 +180,11 @@ sudo NZ_SERVER=your-server:8008 NZ_CLIENT_SECRET=your-secret bash install.sh
 
 ### Dashboard (Windows)
 
+> **⚠️ Windows 版本存在异常资源占用问题（未修复）**
+
 ```powershell
 # 下载并解压
-Expand-Archive nezha-dashboard-v0.0.3-windows-amd64.zip -DestinationPath dashboard
+Expand-Archive nezha-dashboard-v0.0.4-windows-amd64.zip -DestinationPath dashboard
 cd dashboard
 
 # 以管理员身份运行安装脚本
@@ -178,9 +205,11 @@ Start-Service NezhaDashboard
 
 ### Agent (Windows)
 
+> **⚠️ Windows 版本存在异常资源占用问题（未修复）**
+
 ```powershell
 # 下载并解压
-Expand-Archive nezha-agent-v0.0.3-windows-amd64.zip -DestinationPath agent
+Expand-Archive nezha-agent-v0.0.4-windows-amd64.zip -DestinationPath agent
 cd agent
 
 # 以管理员身份运行安装脚本
