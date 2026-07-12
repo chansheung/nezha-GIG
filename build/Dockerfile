@@ -110,6 +110,15 @@ RUN if [ -s /tmp/custom-frontend/index.html ]; then \
       echo "=== Using official frontend ==="; \
     fi
 
+# Ensure non-bundled public assets (logo, animated-man, favicons, manifest) are present
+# fetch-frontends.sh may miss these files; copy with -n (no-clobber) so upstream-provided versions win
+COPY assets/ /tmp/nezha-assets/
+RUN cp -rn /tmp/nezha-assets/admin-dist/. cmd/dashboard/admin-dist/ \
+    && cp -rn /tmp/nezha-assets/user-dist/. cmd/dashboard/user-dist/ \
+    && echo "=== Missing public assets ensured ===" \
+    && echo "=== admin-dist assets ===" && ls -la cmd/dashboard/admin-dist/*.svg cmd/dashboard/admin-dist/*.webp 2>/dev/null \
+    && echo "=== user-dist assets ===" && ls -la cmd/dashboard/user-dist/*.webp cmd/dashboard/user-dist/*.png cmd/dashboard/user-dist/*.ico cmd/dashboard/user-dist/*.json 2>/dev/null
+
 # Generate Swagger docs using go.mod-pinned swag version
 RUN go run github.com/swaggo/swag/cmd/swag init --pd -d cmd/dashboard -g main.go -o cmd/dashboard/docs
 

@@ -41,6 +41,20 @@ cd build
 ./build.sh
 ```
 
+## 前端公共资源补全
+
+`fetch-frontends.sh` 下载的官方前端 dist 可能缺少非打包的公共资源文件（`logo.svg`、
+`animated-man.webp`、favicon 图标、`manifest.json`），导致管理面板 Logo 和动画图显示异常。
+
+`assets/` 目录保存了这些文件的正确版本。Dockerfile 构建时会用 `cp -rn`（不覆盖）
+将它们补入 `admin-dist/` 和 `user-dist/`，上游已提供的同名文件优先。
+
+如需更新这些资源，替换 `assets/` 下对应文件后重新构建即可。
+
+> 资源来源: [nezhahq/admin-frontend](https://github.com/nezhahq/admin-frontend) 和
+> [nezhahq/user-frontend](https://github.com/nezhahq/user-frontend) 的 `public/` 目录 (Apache 2.0)。
+> `favicon.ico` 由 `apple-touch-icon.png` 派生生成（上游未提供）。
+
 ## 部署
 
 ```bash
@@ -67,6 +81,9 @@ build/
 ├── README.md                  # 本文档
 ├── patches/
 │   └── controller.go          # 补丁版 controller.go (v2.0.3 + CVE 修复)
+├── assets/                    # 缺失的公共静态资源 (logo/图标/动画)
+│   ├── admin-dist/            #   管理面板: logo.svg, animated-man.webp
+│   └── user-dist/             #   用户首页: favicons, manifest.json, animated-man.webp
 └── admin-dist/                # (可选) extract-frontend.sh 生成
 ```
 
