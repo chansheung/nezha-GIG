@@ -79,11 +79,23 @@ RUN grep -q 'OpenRoot' cmd/dashboard/controller/controller.go \
     && ! grep -Eq '^\s*"path"$' cmd/dashboard/controller/controller.go \
     && ! grep -q 'path\.Join' cmd/dashboard/controller/controller.go
 
+# Apply temperature category alert rule patch — add temperature_cpu_max, temperature_gpu_max, temperature_disk_max
+COPY patches/rule.go model/rule.go
+
+# Verify the rule patch is present
+RUN grep -q 'temperature_cpu_max' model/rule.go \
+    && grep -q 'temperature_gpu_max' model/rule.go \
+    && grep -q 'temperature_disk_max' model/rule.go \
+    && grep -q 'maxTempByCategory' model/rule.go
+
 # Fetch official frontend dists
 # NOTE: To preserve GPU panel customization, see extract-frontend.sh
-# 经 ${GITHUB_PROXY} 代理 fetch-frontends.sh 内硬编码的 github.com URL (失败仍优雅降级为占位前端)
+# fetch-frontends.sh 从 service/singleton/frontend-templates.yaml 读取 repository URL，
+# 真正的 github.com 链接在 YAML 里 (而非 .sh) —— 故两个文件都要经 ${GITHUB_PROXY} 改写
+# (失败仍优雅降级为占位前端)
 RUN if [ -n "${GITHUB_PROXY}" ]; then \
         sed -i "s|https://github.com|${GITHUB_PROXY}/https://github.com|g" script/fetch-frontends.sh; \
+        sed -i "s|https://github.com|${GITHUB_PROXY}/https://github.com|g" service/singleton/frontend-templates.yaml; \
     fi && \
     chmod +x script/fetch-frontends.sh \
     && if ./script/fetch-frontends.sh; then \
@@ -133,8 +145,26 @@ RUN chmod +x /tmp/user-frontend-vram.sh \
          echo "WARNING: user-dist main JS (index*.js) not found, skipping VRAM patch"; \
        fi
 
-# Generate Swagger docs using go.mod-pinned swag version
-RUN go run github.com/swaggo/swag/cmd/swag init --pd -d cmd/dashboard -g main.go -o cmd/dashboard/docs
+# Patch admin frontend: add temperature category rule types to the dropdown
+RUN ADMIN_JS=$(ls cmd/dashboard/admin-dist/assets/index-*.js 2>/dev/null | head -1) \
+    && if [ -n "$ADMIN_JS" ]; then \
+         sed -i 's|e\.jsx(_,{value:"temperature_max",children:"temperature_max"})|e.jsx(_,{value:"temperature_max",children:"temperature_max"}),e.jsx(_,{value:"temperature_cpu_max",children:"temperature_cpu_max"}),e.jsx(_,{value:"temperature_gpu_max",children:"temperature_gpu_max"}),e.jsx(_,{value:"temperature_disk_max",children:"temperature_disk_max"})|g' "$ADMIN_JS" \
+         && echo "=== Frontend dropdown patched with temperature category types ===" \
+         && grep -q 'temperature_cpu_max' "$ADMIN_JS" \
+         && grep -q 'temperature_gpu_max' "$ADMIN_JS" \
+         && grep -q 'temperature_disk_max' "$ADMIN_JS" \
+         && echo "All 3 new rule types verified in frontend JS"; \
+       else \
+         echo "WARNING: admin-dist JS not found, skipping frontend patch"; \
+       fi
+
+# Generate Swagger docs. `go install pkg@version` builds the swag CLI as a
+# standalone tool in $GOPATH/bin, so its own deps (github.com/urfave/cli/v2)
+# are resolved independently and do NOT need to be in the project go.sum
+# (`go run github.com/swaggo/swag/cmd/swag ...` would otherwise fail with
+#  "missing go.sum entry for github.com/urfave/cli/v2").
+RUN go install github.com/swaggo/swag/cmd/swag@v1.16.4 \
+    && swag init --pd -d cmd/dashboard -g main.go -o cmd/dashboard/docs
 
 RUN mkdir -p /output
 

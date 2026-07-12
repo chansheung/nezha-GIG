@@ -61,7 +61,9 @@ step "提取构建产物 ..."
 rm -rf "${OUTPUT_DIR:?}"/*
 mkdir -p "$OUTPUT_DIR"
 docker rm -f "$CONTAINER_NAME" >/dev/null 2>&1 || true
-docker create --name "$CONTAINER_NAME" "$IMAGE_NAME" >/dev/null
+# 终阶段是 FROM scratch，无 CMD/ENTRYPOINT —— docker create 必须显式给一个命令，
+# 否则报 "no command specified"。这里只做 docker cp (从不 start)，命令无需真实存在。
+docker create --name "$CONTAINER_NAME" "$IMAGE_NAME" /bin/true >/dev/null
 docker cp "$CONTAINER_NAME:/output/." "$OUTPUT_DIR/"
 docker rm "$CONTAINER_NAME" >/dev/null
 
