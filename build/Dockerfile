@@ -35,7 +35,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN printf -- '--retry 12\n--retry-delay 3\n--retry-connrefused\n--retry-all-errors\n--http1.1\n--connect-timeout 15\n--speed-limit 1024\n--speed-time 60\n' > /root/.curlrc
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        git unzip curl ca-certificates gcc libc6-dev \
+        git unzip curl ca-certificates gcc libc6-dev python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # 优先使用 host 端预下载的 yq (断点续传，最抗 github 抖动)；缺失则经代理 curl 兜底
@@ -118,6 +118,20 @@ RUN cp -rn /tmp/nezha-assets/admin-dist/. cmd/dashboard/admin-dist/ \
     && echo "=== Missing public assets ensured ===" \
     && echo "=== admin-dist assets ===" && ls -la cmd/dashboard/admin-dist/*.svg cmd/dashboard/admin-dist/*.webp 2>/dev/null \
     && echo "=== user-dist assets ===" && ls -la cmd/dashboard/user-dist/*.webp cmd/dashboard/user-dist/*.png cmd/dashboard/user-dist/*.ico cmd/dashboard/user-dist/*.json 2>/dev/null
+
+# Patch user frontend: add GPU VRAM panel + filter _mem entries from the temperature list.
+# Runs AFTER user-dist is fully assembled (frontends fetched + public assets ensured).
+# python3 (installed above) is required by the patcher. See patches/user-frontend-vram.sh.
+# NOTE: vite uses dot-separated hash naming (index.HASH.js), so glob is index*.js not index-*.js.
+COPY patches/user-frontend-vram.sh /tmp/user-frontend-vram.sh
+RUN chmod +x /tmp/user-frontend-vram.sh \
+    && USER_JS="$(ls cmd/dashboard/user-dist/assets/index*.js 2>/dev/null | grep -v '\.css$' | head -1)" \
+    && if [ -n "$USER_JS" ]; then \
+         /tmp/user-frontend-vram.sh "$USER_JS" \
+         && echo "=== User frontend VRAM patch applied to $USER_JS ==="; \
+       else \
+         echo "WARNING: user-dist main JS (index*.js) not found, skipping VRAM patch"; \
+       fi
 
 # Generate Swagger docs using go.mod-pinned swag version
 RUN go run github.com/swaggo/swag/cmd/swag init --pd -d cmd/dashboard -g main.go -o cmd/dashboard/docs
